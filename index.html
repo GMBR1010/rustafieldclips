@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUSTAFIELD CLIPS - Melhores Clipadas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --bg-card: #0a0f0a;
+            --bg-hover: #0f1a0f;
+            --neon-green: #00ff41;
+            --neon-green-dark: #00cc33;
+            --neon-green-glow: rgba(0, 255, 65, 0.6);
+            --neon-green-soft: rgba(0, 255, 65, 0.1);
+            --text-primary: #e0ffe0;
+            --text-secondary: #4a7a4a;
+            --border-color: #0f2f0f;
+            --success: #00ff41;
+            --danger: #ff3344;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(ellipse at top, rgba(0, 255, 65, 0.08) 0%, transparent 50%),
+                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 60px 60px, 60px 60px;
+        }
+
+        /* Scanline effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.1) 0px,
+                rgba(0, 0, 0, 0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(180deg, rgba(0, 20, 0, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%);
+            border-bottom: 2px solid var(--neon-green);
+            padding: 0 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 40px rgba(0, 255, 65, 0.3), inset 0 -1px 0 rgba(0, 255, 65, 0.2);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--neon-green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 0 25px var(--neon-green-glow), inset 0 0 15px rgba(255,255,255,0.3);
+            color: #000;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 25px var(--neon-green-glow); }
+            50% { box-shadow: 0 0 40px var(--neon-green-glow), 0 0 60px rgba(0, 255, 65, 0.3); }
+        }
+
+        .logo h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green-glow), 0 0 20px var(--neon-green-glow), 0 0 40px rgba(0, 255, 65, 0.3);
+        }
+
+        .logo span {
+            color: var(--text-primary);
+            text-shadow: none;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--neon-green);
+            color: #000;
+            box-shadow: 0 0 20px var(--neon-green-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px var(--neon-green-glow), 0 5px 25px rgba(0,0,0,0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--neon-green);
+            border: 2px solid var(--neon-green);
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.2), inset 0 0 10px rgba(0, 255, 65, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4), inset 0 0 20px rgba(0, 255, 65, 0.2);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 51, 68, 0.4);
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 0 25px rgba(255, 51, 68, 0.6);
+        }
+
+        .btn-small {
+            padding: 8px 14px;
+            font-size: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--neon-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-green-glow);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .user-name {
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .admin-badge {
+            background: var(--danger);
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 700;
+            margin-left: 8px;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(255, 51, 68, 0.4);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 70px 20px;
+            margin-bottom: 40px;
+            background: 
+                radial-gradient(ellipse at center, rgba(0, 255, 65, 0.1) 0%, transparent 70%),
+                linear-gradient(135deg, rgba(0, 255, 65, 0.05), transparent);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+            box-shadow: 0 0 20px var(--neon-green-glow);
+        }
+
+        .hero h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green-glow), 0 0 40px rgba(0, 255, 65, 0.3);
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green-glow);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 5px;
+        }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--neon-green);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--neon-green-glow);
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-green);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.2), 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            padding-top: 56.25%;
+            background: #000;
+        }
+
+        .video-thumbnail iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 18px;
+        }
+
+        .video-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            color: var(--text-primary);
+        }
+
+        .video-description {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .video-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-avatar {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--neon-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #000;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .video-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 35px;
+            width: 90%;
+            max-width: 450px;
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 50px rgba(0, 255, 65, 0.3);
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green-glow);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--neon-green);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2), inset 0 0 10px rgba(0, 255, 65, 0.05);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-error {
+            color: var(--danger);
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        .form-success {
+            color: var(--success);
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-tabs {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .form-tab {
+            flex: 1;
+            padding: 12px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .form-tab.active {
+            color: var(--neon-green);
+        }
+
+        .form-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--neon-green);
+            box-shadow: 0 0 10px var(--neon-green-glow);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            filter: grayscale(0.5);
+        }
+
+        .empty-state h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            letter-spacing: 2px;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--neon-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Notifications */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 16px 28px;
+            border-radius: 8px;
+            color: #000;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1px;
+            z-index: 3000;
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification.success {
+            background: var(--neon-green);
+            box-shadow: 0 0 30px var(--neon-green-glow);
+        }
+
+        .notification.error {
+            background: var(--danger);
+            color: #fff;
+            box-shadow: 0 0 30px rgba(255, 51, 68, 0.5);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            .logo h1 {
+                font-size: 18px;
+            }
+
+            .hero h2 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            .stats {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .btn {
+                padding: 10px 16px;
+                font-size: 10px;
+            }
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a class="logo" href="#" onclick="location.reload()">
+                <div class="logo-icon">🎮</div>
+                <h1>RUSTAFIELD <span>CLIPS</span></h1>
+            </a>
+            
+            <div class="nav-buttons" id="navButtons">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>⚡ RUSTAFIELD CLIPS ⚡</h2>
+            <p>Compartilhe suas melhores jogadas e momentos épicos!</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalClips">0</div>
+                    <div class="stat-label">Clips</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalUsers">0</div>
+                    <div class="stat-label">Players</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section>
+            <div class="section-header">
+                <h3 class="section-title">Últimos Clips</h3>
+            </div>
+            
+            <div id="videoGrid" class="video-grid">
+                <div class="loading" style="grid-column: 1 / -1;">
+                    <div class="loading-spinner"></div>
+                    <p>Carregando clips...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="authModalTitle">LOGIN</h3>
+                <button class="modal-close" onclick="closeModal('authModal')">&times;</button>
+            </div>
+            
+            <div class="form-tabs">
+                <button class="form-tab active" onclick="switchAuthTab('login')">Login</button>
+                <button class="form-tab" onclick="switchAuthTab('register')">Registrar</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Usuário</label>
+                    <input type="text" id="loginUsername" required placeholder="Seu nome de usuário">
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" id="loginPassword" required placeholder="Sua senha">
+                </div>
+                <div id="loginError" class="form-error"></div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Entrar</button>
+            </form>
+            
+            <!-- Register Form -->
+            <form id="registerForm" class="hidden" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>Usuário</label>
+                    <input type="text" id="registerUsername" required placeholder="Escolha um nome">
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" id="registerPassword" required placeholder="Crie uma senha">
+                </div>
+                <div class="form-group">
+                    <label>Confirmar Senha</label>
+                    <input type="password" id="registerConfirm" required placeholder="Confirme a senha">
+                </div>
+                <div id="registerError" class="form-error"></div>
+                <div id="registerSuccess" class="form-success"></div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Criar Conta</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Post Video Modal -->
+    <div class="modal-overlay" id="postModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">POSTAR CLIP</h3>
+                <button class="modal-close" onclick="closeModal('postModal')">&times;</button>
+            </div>
+            
+            <form onsubmit="handlePostVideo(event)">
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" id="videoTitle" required placeholder="Ex: Raid insano em trio">
+                </div>
+                <div class="form-group">
+                    <label>URL do Vídeo</label>
+                    <input type="url" id="videoUrl" required placeholder="YouTube ou Twitch Clip">
+                </div>
+                <div class="form-group">
+                    <label>Descrição (opcional)</label>
+                    <textarea id="videoDescription" placeholder="Descreva seu clip..."></textarea>
+                </div>
+                <div id="postError" class="form-error"></div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Publicar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // CONFIGURAÇÃO JSONBIN.IO
+        // ========================================
+        const CONFIG = {
+            MASTER_KEY: '$2a$10$4ZMKXJ8Ixb.oX.itZmWdu.0vbXvVfSRNOQFMI86V2Xbyyc48DserG',
+            USERS_BIN_ID: '696161fdae596e708fd0cd15',
+            VIDEOS_BIN_ID: '696162c3ae596e708fd0ce56',
+            API_URL: 'https://api.jsonbin.io/v3/b'
+        };
+
+        // Admin credentials
+        const ADMIN_USERNAME = 'admin';
+        const ADMIN_PASSWORD = '281295';
+
+        // ========================================
+        // API FUNCTIONS
+        // ========================================
+        
+        async function fetchBin(binId) {
+            try {
+                const response = await fetch(`${CONFIG.API_URL}/${binId}/latest`, {
+                    headers: {
+                        'X-Master-Key': CONFIG.MASTER_KEY
+                    }
+                });
+                const data = await response.json();
+                return data.record;
+            } catch (error) {
+                console.error('Erro ao buscar dados:', error);
+                return null;
+            }
+        }
+
+        async function updateBin(binId, data) {
+            try {
+                const response = await fetch(`${CONFIG.API_URL}/${binId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': CONFIG.MASTER_KEY
+                    },
+                    body: JSON.stringify(data)
+                });
+                return await response.json();
+            } catch (error) {
+                console.error('Erro ao atualizar dados:', error);
+                return null;
+            }
+        }
+
+        // ========================================
+        // USER MANAGEMENT
+        // ========================================
+
+        function getCurrentUser() {
+            const userJson = sessionStorage.getItem('rustafield_user');
+            return userJson ? JSON.parse(userJson) : null;
+        }
+
+        function setCurrentUser(user) {
+            if (user) {
+                sessionStorage.setItem('rustafield_user', JSON.stringify(user));
+            } else {
+                sessionStorage.removeItem('rustafield_user');
+            }
+        }
+
+        // ========================================
+        // VIDEO FUNCTIONS
+        // ========================================
+
+        function extractVideoEmbed(url) {
+            // YouTube
+            const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+            if (ytMatch) {
+                return `https://www.youtube.com/embed/${ytMatch[1]}`;
+            }
+            
+            // Twitch clips
+            const twitchMatch = url.match(/(?:clips\.twitch\.tv\/|twitch\.tv\/\w+\/clip\/)([a-zA-Z0-9_-]+)/);
+            if (twitchMatch) {
+                return `https://clips.twitch.tv/embed?clip=${twitchMatch[1]}&parent=${window.location.hostname}`;
+            }
+            
+            return null;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diff = now - date;
+            
+            const minutes = Math.floor(diff / 60000);
+            const hours = Math.floor(diff / 3600000);
+            const days = Math.floor(diff / 86400000);
+            
+            if (minutes < 1) return 'agora';
+            if (minutes < 60) return `${minutes}min`;
+            if (hours < 24) return `${hours}h`;
+            if (days < 7) return `${days}d`;
+            
+            return date.toLocaleDateString('pt-BR');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ========================================
+        // UI FUNCTIONS
+        // ========================================
+
+        function showNotification(message, type = 'success') {
+            const existing = document.querySelector('.notification');
+            if (existing) existing.remove();
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        function updateNav() {
+            const navButtons = document.getElementById('navButtons');
+            const currentUser = getCurrentUser();
+            
+            if (currentUser) {
+                navButtons.innerHTML = `
+                    <button class="btn btn-primary" onclick="openModal('postModal')">+ CLIP</button>
+                    <div class="user-info">
+                        <div class="user-avatar">${currentUser.username.charAt(0).toUpperCase()}</div>
+                        <span class="user-name">
+                            ${escapeHtml(currentUser.username)}
+                            ${currentUser.isAdmin ? '<span class="admin-badge">ADMIN</span>' : ''}
+                        </span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="handleLogout()">SAIR</button>
+                `;
+            } else {
+                navButtons.innerHTML = `
+                    <button class="btn btn-secondary" onclick="openModal('authModal')">LOGIN</button>
+                    <button class="btn btn-primary" onclick="openModal('authModal'); setTimeout(() => switchAuthTab('register'), 100)">REGISTRAR</button>
+                `;
+            }
+        }
+
+        async function updateStats() {
+            const users = await fetchBin(CONFIG.USERS_BIN_ID);
+            const videos = await fetchBin(CONFIG.VIDEOS_BIN_ID);
+            
+            if (users) {
+                document.getElementById('totalUsers').textContent = Object.keys(users).length;
+            }
+            if (videos && Array.isArray(videos)) {
+                const realVideos = videos.filter(v => !v.teste);
+                document.getElementById('totalClips').textContent = realVideos.length;
+            }
+        }
+
+        async function renderVideos() {
+            const videoGrid = document.getElementById('videoGrid');
+            const videos = await fetchBin(CONFIG.VIDEOS_BIN_ID);
+            const currentUser = getCurrentUser();
+            
+            if (!videos || videos.length === 0) {
+                videoGrid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <div class="empty-state-icon">🎬</div>
+                        <h3>NENHUM CLIP AINDA</h3>
+                        <p>Seja o primeiro a postar uma clipada épica!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Filter out test data and sort by date
+            const realVideos = videos.filter(v => !v.teste && v.id);
+            const sortedVideos = [...realVideos].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            
+            if (sortedVideos.length === 0) {
+                videoGrid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <div class="empty-state-icon">🎬</div>
+                        <h3>NENHUM CLIP AINDA</h3>
+                        <p>Seja o primeiro a postar uma clipada épica!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            videoGrid.innerHTML = sortedVideos.map(video => {
+                const embedUrl = extractVideoEmbed(video.url);
+                const canDelete = currentUser && (currentUser.isAdmin || currentUser.username === video.author);
+                const isAdminDeleting = currentUser && currentUser.isAdmin && currentUser.username !== video.author;
+                
+                return `
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            ${embedUrl ? 
+                                `<iframe src="${embedUrl}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>` :
+                                `<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);font-family:'Orbitron',sans-serif;">URL INVÁLIDA</div>`
+                            }
+                        </div>
+                        <div class="video-info">
+                            <h4 class="video-title">${escapeHtml(video.title)}</h4>
+                            ${video.description ? `<p class="video-description">${escapeHtml(video.description)}</p>` : ''}
+                            <div class="video-meta">
+                                <div class="video-author">
+                                    <div class="author-avatar">${video.author.charAt(0).toUpperCase()}</div>
+                                    <span>${escapeHtml(video.author)}</span>
+                                </div>
+                                <span>${formatDate(video.createdAt)}</span>
+                            </div>
+                            ${canDelete ? `
+                                <div class="video-actions">
+                                    <button class="btn btn-danger btn-small" onclick="deleteVideo('${video.id}')">
+                                        ${isAdminDeleting ? '🛡️ REMOVER (ADMIN)' : '🗑️ EXCLUIR'}
+                                    </button>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ========================================
+        // MODAL FUNCTIONS
+        // ========================================
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            
+            // Reset forms
+            if (modalId === 'authModal') {
+                document.getElementById('loginForm').reset();
+                document.getElementById('registerForm').reset();
+                document.getElementById('loginError').classList.remove('show');
+                document.getElementById('registerError').classList.remove('show');
+                document.getElementById('registerSuccess').classList.remove('show');
+            }
+            if (modalId === 'postModal') {
+                document.querySelector('#postModal form').reset();
+                document.getElementById('postError').classList.remove('show');
+            }
+        }
+
+        function switchAuthTab(tab) {
+            const tabs = document.querySelectorAll('.form-tab');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const title = document.getElementById('authModalTitle');
+            
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            if (tab === 'login') {
+                tabs[0].classList.add('active');
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                title.textContent = 'LOGIN';
+            } else {
+                tabs[1].classList.add('active');
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                title.textContent = 'REGISTRAR';
+            }
+        }
+
+        // ========================================
+        // AUTH HANDLERS
+        // ========================================
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('loginUsername').value.trim().toLowerCase();
+            const password = document.getElementById('loginPassword').value;
+            const errorEl = document.getElementById('loginError');
+            
+            errorEl.classList.remove('show');
+            
+            const users = await fetchBin(CONFIG.USERS_BIN_ID);
+            
+            if (!users || !users[username] || users[username].password !== password) {
+                errorEl.textContent = 'Usuário ou senha incorretos';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            setCurrentUser({
+                username: username,
+                isAdmin: users[username].isAdmin || false
+            });
+            
+            closeModal('authModal');
+            updateNav();
+            renderVideos();
+            showNotification(`Bem-vindo, ${username}!`);
+        }
+
+        async function handleRegister(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('registerUsername').value.trim().toLowerCase();
+            const password = document.getElementById('registerPassword').value;
+            const confirm = document.getElementById('registerConfirm').value;
+            const errorEl = document.getElementById('registerError');
+            const successEl = document.getElementById('registerSuccess');
+            
+            errorEl.classList.remove('show');
+            successEl.classList.remove('show');
+            
+            // Validations
+            if (username.length < 3) {
+                errorEl.textContent = 'Usuário deve ter pelo menos 3 caracteres';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            if (!/^[a-z0-9_]+$/.test(username)) {
+                errorEl.textContent = 'Apenas letras minúsculas, números e _';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            if (password.length < 4) {
+                errorEl.textContent = 'Senha deve ter pelo menos 4 caracteres';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            if (password !== confirm) {
+                errorEl.textContent = 'As senhas não coincidem';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            const users = await fetchBin(CONFIG.USERS_BIN_ID);
+            
+            if (users && users[username]) {
+                errorEl.textContent = 'Este usuário já existe';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            // Create user
+            const updatedUsers = {
+                ...users,
+                [username]: {
+                    password: password,
+                    isAdmin: false,
+                    createdAt: new Date().toISOString()
+                }
+            };
+            
+            await updateBin(CONFIG.USERS_BIN_ID, updatedUsers);
+            
+            successEl.textContent = 'Conta criada! Faça login para continuar.';
+            successEl.classList.add('show');
+            document.getElementById('registerForm').reset();
+            
+            updateStats();
+            
+            setTimeout(() => {
+                switchAuthTab('login');
+                successEl.classList.remove('show');
+            }, 2000);
+        }
+
+        function handleLogout() {
+            setCurrentUser(null);
+            updateNav();
+            renderVideos();
+            showNotification('Você saiu da conta');
+        }
+
+        // ========================================
+        // VIDEO HANDLERS
+        // ========================================
+
+        async function handlePostVideo(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('videoTitle').value.trim();
+            const url = document.getElementById('videoUrl').value.trim();
+            const description = document.getElementById('videoDescription').value.trim();
+            const errorEl = document.getElementById('postError');
+            const currentUser = getCurrentUser();
+            
+            errorEl.classList.remove('show');
+            
+            if (!currentUser) {
+                showNotification('Você precisa estar logado', 'error');
+                return;
+            }
+            
+            if (!extractVideoEmbed(url)) {
+                errorEl.textContent = 'URL inválida. Use YouTube ou Twitch Clips.';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            let videos = await fetchBin(CONFIG.VIDEOS_BIN_ID) || [];
+            
+            // Filter out test data
+            if (!Array.isArray(videos)) {
+                videos = [];
+            }
+            const realVideos = videos.filter(v => !v.teste);
+            
+            const newVideo = {
+                id: Date.now().toString(36) + Math.random().toString(36).substr(2),
+                title: title,
+                url: url,
+                description: description,
+                author: currentUser.username,
+                createdAt: new Date().toISOString()
+            };
+            
+            realVideos.push(newVideo);
+            
+            await updateBin(CONFIG.VIDEOS_BIN_ID, realVideos);
+            
+            closeModal('postModal');
+            updateStats();
+            renderVideos();
+            showNotification('Clip publicado!');
+        }
+
+        async function deleteVideo(videoId) {
+            const currentUser = getCurrentUser();
+            if (!currentUser) return;
+            
+            if (!confirm('Tem certeza que deseja excluir este clip?')) return;
+            
+            const videos = await fetchBin(CONFIG.VIDEOS_BIN_ID);
+            const video = videos.find(v => v.id === videoId);
+            
+            if (!video) return;
+            
+            if (!currentUser.isAdmin && video.author !== currentUser.username) {
+                showNotification('Sem permissão para excluir', 'error');
+                return;
+            }
+            
+            const newVideos = videos.filter(v => v.id !== videoId);
+            await updateBin(CONFIG.VIDEOS_BIN_ID, newVideos);
+            
+            updateStats();
+            renderVideos();
+            showNotification('Clip excluído!');
+        }
+
+        // ========================================
+        // EVENT LISTENERS
+        // ========================================
+
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+        // ESC key to close modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    closeModal(modal.id);
+                });
+            }
+        });
+
+        // ========================================
+        // INITIALIZE
+        // ========================================
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateNav();
+            updateStats();
+            renderVideos();
+            
+            // Auto refresh every 30 seconds
+            setInterval(() => {
+                renderVideos();
+                updateStats();
+            }, 30000);
+        });
+    </script>
+</body>
+</html>
