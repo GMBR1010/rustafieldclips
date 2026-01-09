@@ -13,19 +13,15 @@
             --neon-green: #00ff41;
             --neon-green-dark: #00cc33;
             --neon-green-glow: rgba(0, 255, 65, 0.6);
-            --neon-green-soft: rgba(0, 255, 65, 0.1);
             --text-primary: #e0ffe0;
             --text-secondary: #4a7a4a;
             --border-color: #0f2f0f;
             --success: #00ff41;
             --danger: #ff3344;
+            --verified-blue: #1da1f2;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Roboto Condensed', sans-serif;
@@ -39,26 +35,16 @@
             background-size: 100% 100%, 60px 60px, 60px 60px;
         }
 
-        /* Scanline effect */
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.1) 0px,
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 2px
-            );
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
             pointer-events: none;
             z-index: 9999;
         }
 
-        /* Header */
         header {
             background: linear-gradient(180deg, rgba(0, 20, 0, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%);
             border-bottom: 2px solid var(--neon-green);
@@ -67,7 +53,7 @@
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
-            box-shadow: 0 0 40px rgba(0, 255, 65, 0.3), inset 0 -1px 0 rgba(0, 255, 65, 0.2);
+            box-shadow: 0 0 40px rgba(0, 255, 65, 0.3);
         }
 
         .header-content {
@@ -88,15 +74,14 @@
         }
 
         .logo-icon {
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             background: var(--neon-green);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
-            box-shadow: 0 0 25px var(--neon-green-glow), inset 0 0 15px rgba(255,255,255,0.3);
+            box-shadow: 0 0 25px var(--neon-green-glow);
             color: #000;
             animation: pulse-glow 2s ease-in-out infinite;
         }
@@ -112,19 +97,12 @@
             font-weight: 900;
             letter-spacing: 4px;
             color: var(--neon-green);
-            text-shadow: 0 0 10px var(--neon-green-glow), 0 0 20px var(--neon-green-glow), 0 0 40px rgba(0, 255, 65, 0.3);
+            text-shadow: 0 0 10px var(--neon-green-glow), 0 0 20px var(--neon-green-glow);
         }
 
-        .logo span {
-            color: var(--text-primary);
-            text-shadow: none;
-        }
+        .logo span { color: var(--text-primary); text-shadow: none; }
 
-        .nav-buttons {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
+        .nav-buttons { display: flex; gap: 12px; align-items: center; }
 
         .btn {
             padding: 12px 24px;
@@ -137,8 +115,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-primary {
@@ -149,19 +125,19 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 30px var(--neon-green-glow), 0 5px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 0 30px var(--neon-green-glow);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--neon-green);
             border: 2px solid var(--neon-green);
-            box-shadow: 0 0 10px rgba(0, 255, 65, 0.2), inset 0 0 10px rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
         }
 
         .btn-secondary:hover {
             background: rgba(0, 255, 65, 0.1);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4), inset 0 0 20px rgba(0, 255, 65, 0.2);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
         }
 
         .btn-danger {
@@ -170,24 +146,28 @@
             box-shadow: 0 0 15px rgba(255, 51, 68, 0.4);
         }
 
-        .btn-danger:hover {
-            box-shadow: 0 0 25px rgba(255, 51, 68, 0.6);
+        .btn-admin {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
         }
 
-        .btn-small {
-            padding: 8px 14px;
-            font-size: 10px;
+        .btn-admin:hover {
+            box-shadow: 0 0 25px rgba(102, 126, 234, 0.6);
         }
 
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .btn-verify {
+            background: var(--verified-blue);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(29, 161, 242, 0.4);
         }
+
+        .btn-small { padding: 8px 14px; font-size: 10px; }
+
+        .user-info { display: flex; align-items: center; gap: 12px; }
 
         .user-avatar {
-            width: 42px;
-            height: 42px;
+            width: 42px; height: 42px;
             border-radius: 50%;
             background: var(--neon-green);
             display: flex;
@@ -204,7 +184,48 @@
             font-weight: 700;
             font-family: 'Orbitron', sans-serif;
             font-size: 14px;
-            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Selo de verificação - Bolinha azul */
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px; 
+            height: 20px;
+            background: var(--verified-blue);
+            border-radius: 50%;
+            margin-left: 4px;
+            box-shadow: 0 0 10px rgba(29, 161, 242, 0.6);
+            position: relative;
+        }
+
+        .verified-badge svg {
+            width: 12px;
+            height: 12px;
+            fill: white;
+        }
+
+        /* Selo menor para os clips */
+        .author-verified {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px; 
+            height: 16px;
+            background: var(--verified-blue);
+            border-radius: 50%;
+            margin-left: 4px;
+            box-shadow: 0 0 8px rgba(29, 161, 242, 0.5);
+        }
+
+        .author-verified svg {
+            width: 10px;
+            height: 10px;
+            fill: white;
         }
 
         .admin-badge {
@@ -215,37 +236,25 @@
             font-size: 9px;
             font-weight: 700;
             margin-left: 8px;
-            letter-spacing: 1px;
             box-shadow: 0 0 10px rgba(255, 51, 68, 0.4);
         }
 
-        /* Main Content */
-        main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 30px 20px;
-        }
+        main { max-width: 1400px; margin: 0 auto; padding: 30px 20px; }
 
-        /* Hero Section */
         .hero {
             text-align: center;
             padding: 70px 20px;
             margin-bottom: 40px;
-            background: 
-                radial-gradient(ellipse at center, rgba(0, 255, 65, 0.1) 0%, transparent 70%),
-                linear-gradient(135deg, rgba(0, 255, 65, 0.05), transparent);
+            background: radial-gradient(ellipse at center, rgba(0, 255, 65, 0.1) 0%, transparent 70%);
             border-radius: 20px;
             border: 1px solid var(--border-color);
             position: relative;
-            overflow: hidden;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
             box-shadow: 0 0 20px var(--neon-green-glow);
@@ -256,28 +265,15 @@
             font-size: 42px;
             font-weight: 900;
             letter-spacing: 6px;
-            margin-bottom: 15px;
             color: var(--neon-green);
-            text-shadow: 0 0 20px var(--neon-green-glow), 0 0 40px rgba(0, 255, 65, 0.3);
+            text-shadow: 0 0 20px var(--neon-green-glow);
         }
 
-        .hero p {
-            color: var(--text-secondary);
-            font-size: 18px;
-            letter-spacing: 2px;
-        }
+        .hero p { color: var(--text-secondary); font-size: 18px; letter-spacing: 2px; margin-top: 15px; }
 
-        /* Stats */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 40px;
-        }
+        .stats { display: flex; justify-content: center; gap: 60px; margin-top: 40px; }
 
-        .stat-item {
-            text-align: center;
-        }
+        .stat-item { text-align: center; }
 
         .stat-number {
             font-family: 'Orbitron', sans-serif;
@@ -292,10 +288,8 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-top: 5px;
         }
 
-        /* Section Header */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -314,19 +308,16 @@
             align-items: center;
             gap: 12px;
             color: var(--neon-green);
-            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
         }
 
         .section-title::before {
             content: '';
-            width: 4px;
-            height: 24px;
+            width: 4px; height: 24px;
             background: var(--neon-green);
             border-radius: 2px;
             box-shadow: 0 0 10px var(--neon-green-glow);
         }
 
-        /* Video Grid */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
@@ -344,7 +335,7 @@
         .video-card:hover {
             transform: translateY(-5px);
             border-color: var(--neon-green);
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.2), 0 10px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
         }
 
         .video-thumbnail {
@@ -355,22 +346,17 @@
 
         .video-thumbnail iframe {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             border: none;
         }
 
-        .video-info {
-            padding: 18px;
-        }
+        .video-info { padding: 18px; }
 
         .video-title {
             font-size: 16px;
             font-weight: 700;
             margin-bottom: 10px;
-            line-height: 1.4;
             color: var(--text-primary);
         }
 
@@ -378,7 +364,6 @@
             color: var(--text-secondary);
             font-size: 13px;
             margin-bottom: 12px;
-            line-height: 1.5;
         }
 
         .video-meta {
@@ -389,15 +374,10 @@
             font-size: 12px;
         }
 
-        .video-author {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .video-author { display: flex; align-items: center; gap: 8px; }
 
         .author-avatar {
-            width: 26px;
-            height: 26px;
+            width: 26px; height: 26px;
             border-radius: 50%;
             background: var(--neon-green);
             display: flex;
@@ -406,8 +386,9 @@
             font-size: 11px;
             color: #000;
             font-weight: bold;
-            font-family: 'Orbitron', sans-serif;
         }
+
+        .author-name { display: flex; align-items: center; gap: 2px; }
 
         .video-actions {
             display: flex;
@@ -415,16 +396,14 @@
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid var(--border-color);
+            flex-wrap: wrap;
         }
 
-        /* Modal */
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.9);
             z-index: 2000;
             justify-content: center;
@@ -432,9 +411,7 @@
             backdrop-filter: blur(5px);
         }
 
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay.active { display: flex; }
 
         .modal {
             background: var(--bg-card);
@@ -445,17 +422,13 @@
             border: 1px solid var(--neon-green);
             box-shadow: 0 0 50px rgba(0, 255, 65, 0.3);
             animation: modalSlide 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         @keyframes modalSlide {
-            from {
-                opacity: 0;
-                transform: translateY(-30px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .modal-header {
@@ -471,7 +444,6 @@
             font-weight: 700;
             letter-spacing: 3px;
             color: var(--neon-green);
-            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
         }
 
         .modal-close {
@@ -481,18 +453,11 @@
             font-size: 30px;
             cursor: pointer;
             transition: all 0.3s;
-            line-height: 1;
         }
 
-        .modal-close:hover {
-            color: var(--neon-green);
-            text-shadow: 0 0 10px var(--neon-green-glow);
-        }
+        .modal-close:hover { color: var(--neon-green); }
 
-        /* Forms */
-        .form-group {
-            margin-bottom: 20px;
-        }
+        .form-group { margin-bottom: 20px; }
 
         .form-group label {
             display: block;
@@ -504,8 +469,7 @@
             color: var(--neon-green);
         }
 
-        .form-group input,
-        .form-group textarea {
+        .form-group input, .form-group textarea {
             width: 100%;
             padding: 14px 16px;
             background: var(--bg-dark);
@@ -517,45 +481,20 @@
             transition: all 0.3s;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group input:focus, .form-group textarea:focus {
             outline: none;
             border-color: var(--neon-green);
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2), inset 0 0 10px rgba(0, 255, 65, 0.05);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
+        .form-group textarea { resize: vertical; min-height: 80px; }
 
-        .form-error {
-            color: var(--danger);
-            font-size: 13px;
-            margin-top: 8px;
-            display: none;
-        }
+        .form-error { color: var(--danger); font-size: 13px; margin-top: 8px; display: none; }
+        .form-error.show { display: block; }
+        .form-success { color: var(--success); font-size: 13px; margin-top: 8px; display: none; }
+        .form-success.show { display: block; }
 
-        .form-error.show {
-            display: block;
-        }
-
-        .form-success {
-            color: var(--success);
-            font-size: 13px;
-            margin-top: 8px;
-            display: none;
-        }
-
-        .form-success.show {
-            display: block;
-        }
-
-        .form-tabs {
-            display: flex;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--border-color);
-        }
+        .form-tabs { display: flex; margin-bottom: 25px; border-bottom: 2px solid var(--border-color); }
 
         .form-tab {
             flex: 1;
@@ -568,172 +507,113 @@
             font-weight: 700;
             letter-spacing: 2px;
             cursor: pointer;
-            transition: all 0.3s;
             position: relative;
         }
 
-        .form-tab.active {
-            color: var(--neon-green);
-        }
+        .form-tab.active { color: var(--neon-green); }
 
         .form-tab.active::after {
             content: '';
             position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
+            bottom: -2px; left: 0;
+            width: 100%; height: 2px;
             background: var(--neon-green);
             box-shadow: 0 0 10px var(--neon-green-glow);
         }
 
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 80px 20px;
-            color: var(--text-secondary);
+        .user-list { max-height: 400px; overflow-y: auto; }
+
+        .user-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.3s;
         }
 
-        .empty-state-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-            filter: grayscale(0.5);
+        .user-item:hover { background: var(--bg-hover); }
+
+        .user-item-info { display: flex; align-items: center; gap: 10px; }
+
+        .user-item-avatar {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: var(--neon-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #000;
+            font-weight: bold;
         }
 
-        .empty-state h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--text-primary);
-            letter-spacing: 2px;
-        }
+        .user-item-name { display: flex; align-items: center; gap: 6px; font-weight: 600; }
 
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-secondary);
-        }
+        .empty-state { text-align: center; padding: 80px 20px; color: var(--text-secondary); }
+        .empty-state-icon { font-size: 80px; margin-bottom: 20px; }
+        .empty-state h3 { font-family: 'Orbitron', sans-serif; font-size: 20px; color: var(--text-primary); }
+
+        .loading { text-align: center; padding: 60px 20px; color: var(--text-secondary); }
 
         .loading-spinner {
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             border: 3px solid var(--border-color);
             border-top-color: var(--neon-green);
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Notifications */
         .notification {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 20px; right: 20px;
             padding: 16px 28px;
             border-radius: 8px;
             color: #000;
             font-weight: 700;
             font-family: 'Orbitron', sans-serif;
             font-size: 12px;
-            letter-spacing: 1px;
             z-index: 3000;
             animation: slideIn 0.3s ease;
         }
 
-        .notification.success {
-            background: var(--neon-green);
-            box-shadow: 0 0 30px var(--neon-green-glow);
-        }
-
-        .notification.error {
-            background: var(--danger);
-            color: #fff;
-            box-shadow: 0 0 30px rgba(255, 51, 68, 0.5);
-        }
+        .notification.success { background: var(--neon-green); box-shadow: 0 0 30px var(--neon-green-glow); }
+        .notification.error { background: var(--danger); color: #fff; }
 
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                flex-wrap: wrap;
-                height: auto;
-                padding: 15px 0;
-                gap: 15px;
-            }
-
-            .logo h1 {
-                font-size: 18px;
-            }
-
-            .hero h2 {
-                font-size: 24px;
-                letter-spacing: 2px;
-            }
-
-            .stats {
-                flex-wrap: wrap;
-                gap: 30px;
-            }
-
-            .stat-number {
-                font-size: 36px;
-            }
-
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-buttons {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .btn {
-                padding: 10px 16px;
-                font-size: 10px;
-            }
+            .header-content { flex-wrap: wrap; height: auto; padding: 15px 0; gap: 15px; }
+            .logo h1 { font-size: 18px; }
+            .hero h2 { font-size: 24px; }
+            .stats { flex-wrap: wrap; gap: 30px; }
+            .stat-number { font-size: 36px; }
+            .video-grid { grid-template-columns: 1fr; }
+            .nav-buttons { flex-wrap: wrap; justify-content: center; }
+            .btn { padding: 10px 16px; font-size: 10px; }
         }
 
-        /* Hidden class */
-        .hidden {
-            display: none !important;
-        }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-content">
             <a class="logo" href="#" onclick="location.reload()">
                 <div class="logo-icon">🎮</div>
                 <h1>RUSTAFIELD <span>CLIPS</span></h1>
             </a>
-            
-            <div class="nav-buttons" id="navButtons">
-                <!-- Dynamic content -->
-            </div>
+            <div class="nav-buttons" id="navButtons"></div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
         <section class="hero">
             <h2>⚡ RUSTAFIELD CLIPS ⚡</h2>
             <p>Compartilhe suas melhores jogadas e momentos épicos!</p>
@@ -749,12 +629,10 @@
             </div>
         </section>
 
-        <!-- Videos Section -->
         <section>
             <div class="section-header">
                 <h3 class="section-title">Últimos Clips</h3>
             </div>
-            
             <div id="videoGrid" class="video-grid">
                 <div class="loading" style="grid-column: 1 / -1;">
                     <div class="loading-spinner"></div>
@@ -771,13 +649,10 @@
                 <h3 class="modal-title" id="authModalTitle">LOGIN</h3>
                 <button class="modal-close" onclick="closeModal('authModal')">&times;</button>
             </div>
-            
             <div class="form-tabs">
                 <button class="form-tab active" onclick="switchAuthTab('login')">Login</button>
                 <button class="form-tab" onclick="switchAuthTab('register')">Registrar</button>
             </div>
-            
-            <!-- Login Form -->
             <form id="loginForm" onsubmit="handleLogin(event)">
                 <div class="form-group">
                     <label>Usuário</label>
@@ -790,8 +665,6 @@
                 <div id="loginError" class="form-error"></div>
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Entrar</button>
             </form>
-            
-            <!-- Register Form -->
             <form id="registerForm" class="hidden" onsubmit="handleRegister(event)">
                 <div class="form-group">
                     <label>Usuário</label>
@@ -819,7 +692,6 @@
                 <h3 class="modal-title">POSTAR CLIP</h3>
                 <button class="modal-close" onclick="closeModal('postModal')">&times;</button>
             </div>
-            
             <form onsubmit="handlePostVideo(event)">
                 <div class="form-group">
                     <label>Título</label>
@@ -839,10 +711,29 @@
         </div>
     </div>
 
+    <!-- Admin Panel Modal -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">🛡️ PAINEL ADMIN</h3>
+                <button class="modal-close" onclick="closeModal('adminModal')">&times;</button>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">
+                Gerencie as verificações dos usuários. Clique para dar ou remover o selo.
+            </p>
+            <div class="user-list" id="userList">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Carregando...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // ========================================
-        // CONFIGURAÇÃO JSONBIN.IO
-        // ========================================
+        // SVG do check para o selo de verificação
+        const checkSVG = `<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>`;
+
         const CONFIG = {
             MASTER_KEY: '$2a$10$4ZMKXJ8Ixb.oX.itZmWdu.0vbXvVfSRNOQFMI86V2Xbyyc48DserG',
             USERS_BIN_ID: '696161fdae596e708fd0cd15',
@@ -850,25 +741,17 @@
             API_URL: 'https://api.jsonbin.io/v3/b'
         };
 
-        // Admin credentials
-        const ADMIN_USERNAME = 'admin';
-        const ADMIN_PASSWORD = '281295';
+        let usersCache = {};
 
-        // ========================================
-        // API FUNCTIONS
-        // ========================================
-        
         async function fetchBin(binId) {
             try {
                 const response = await fetch(`${CONFIG.API_URL}/${binId}/latest`, {
-                    headers: {
-                        'X-Master-Key': CONFIG.MASTER_KEY
-                    }
+                    headers: { 'X-Master-Key': CONFIG.MASTER_KEY }
                 });
                 const data = await response.json();
                 return data.record;
             } catch (error) {
-                console.error('Erro ao buscar dados:', error);
+                console.error('Erro:', error);
                 return null;
             }
         }
@@ -885,14 +768,10 @@
                 });
                 return await response.json();
             } catch (error) {
-                console.error('Erro ao atualizar dados:', error);
+                console.error('Erro:', error);
                 return null;
             }
         }
-
-        // ========================================
-        // USER MANAGEMENT
-        // ========================================
 
         function getCurrentUser() {
             const userJson = sessionStorage.getItem('rustafield_user');
@@ -900,47 +779,36 @@
         }
 
         function setCurrentUser(user) {
-            if (user) {
-                sessionStorage.setItem('rustafield_user', JSON.stringify(user));
-            } else {
-                sessionStorage.removeItem('rustafield_user');
-            }
+            if (user) sessionStorage.setItem('rustafield_user', JSON.stringify(user));
+            else sessionStorage.removeItem('rustafield_user');
         }
 
-        // ========================================
-        // VIDEO FUNCTIONS
-        // ========================================
+        async function loadUsersCache() {
+            usersCache = await fetchBin(CONFIG.USERS_BIN_ID) || {};
+        }
+
+        function isUserVerified(username) {
+            return usersCache[username]?.verified || false;
+        }
 
         function extractVideoEmbed(url) {
-            // YouTube
             const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-            if (ytMatch) {
-                return `https://www.youtube.com/embed/${ytMatch[1]}`;
-            }
-            
-            // Twitch clips
+            if (ytMatch) return `https://www.youtube.com/embed/${ytMatch[1]}`;
             const twitchMatch = url.match(/(?:clips\.twitch\.tv\/|twitch\.tv\/\w+\/clip\/)([a-zA-Z0-9_-]+)/);
-            if (twitchMatch) {
-                return `https://clips.twitch.tv/embed?clip=${twitchMatch[1]}&parent=${window.location.hostname}`;
-            }
-            
+            if (twitchMatch) return `https://clips.twitch.tv/embed?clip=${twitchMatch[1]}&parent=${window.location.hostname}`;
             return null;
         }
 
         function formatDate(dateString) {
             const date = new Date(dateString);
-            const now = new Date();
-            const diff = now - date;
-            
-            const minutes = Math.floor(diff / 60000);
-            const hours = Math.floor(diff / 3600000);
+            const diff = Date.now() - date;
+            const mins = Math.floor(diff / 60000);
+            const hrs = Math.floor(diff / 3600000);
             const days = Math.floor(diff / 86400000);
-            
-            if (minutes < 1) return 'agora';
-            if (minutes < 60) return `${minutes}min`;
-            if (hours < 24) return `${hours}h`;
+            if (mins < 1) return 'agora';
+            if (mins < 60) return `${mins}min`;
+            if (hrs < 24) return `${hrs}h`;
             if (days < 7) return `${days}d`;
-            
             return date.toLocaleDateString('pt-BR');
         }
 
@@ -950,19 +818,12 @@
             return div.innerHTML;
         }
 
-        // ========================================
-        // UI FUNCTIONS
-        // ========================================
-
         function showNotification(message, type = 'success') {
-            const existing = document.querySelector('.notification');
-            if (existing) existing.remove();
-            
+            document.querySelector('.notification')?.remove();
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
             notification.textContent = message;
             document.body.appendChild(notification);
-            
             setTimeout(() => notification.remove(), 3000);
         }
 
@@ -971,12 +832,15 @@
             const currentUser = getCurrentUser();
             
             if (currentUser) {
+                const isVerified = isUserVerified(currentUser.username);
                 navButtons.innerHTML = `
                     <button class="btn btn-primary" onclick="openModal('postModal')">+ CLIP</button>
+                    ${currentUser.isAdmin ? '<button class="btn btn-admin" onclick="openAdminPanel()">🛡️ ADMIN</button>' : ''}
                     <div class="user-info">
                         <div class="user-avatar">${currentUser.username.charAt(0).toUpperCase()}</div>
                         <span class="user-name">
                             ${escapeHtml(currentUser.username)}
+                            ${isVerified ? `<span class="verified-badge">${checkSVG}</span>` : ''}
                             ${currentUser.isAdmin ? '<span class="admin-badge">ADMIN</span>' : ''}
                         </span>
                     </div>
@@ -993,13 +857,10 @@
         async function updateStats() {
             const users = await fetchBin(CONFIG.USERS_BIN_ID);
             const videos = await fetchBin(CONFIG.VIDEOS_BIN_ID);
-            
-            if (users) {
-                document.getElementById('totalUsers').textContent = Object.keys(users).length;
-            }
+            usersCache = users || {};
+            if (users) document.getElementById('totalUsers').textContent = Object.keys(users).length;
             if (videos && Array.isArray(videos)) {
-                const realVideos = videos.filter(v => !v.teste);
-                document.getElementById('totalClips').textContent = realVideos.length;
+                document.getElementById('totalClips').textContent = videos.filter(v => !v.teste && v.id).length;
             }
         }
 
@@ -1007,45 +868,30 @@
             const videoGrid = document.getElementById('videoGrid');
             const videos = await fetchBin(CONFIG.VIDEOS_BIN_ID);
             const currentUser = getCurrentUser();
-            
+            await loadUsersCache();
+
             if (!videos || videos.length === 0) {
-                videoGrid.innerHTML = `
-                    <div class="empty-state" style="grid-column: 1 / -1;">
-                        <div class="empty-state-icon">🎬</div>
-                        <h3>NENHUM CLIP AINDA</h3>
-                        <p>Seja o primeiro a postar uma clipada épica!</p>
-                    </div>
-                `;
+                videoGrid.innerHTML = `<div class="empty-state" style="grid-column: 1 / -1;"><div class="empty-state-icon">🎬</div><h3>NENHUM CLIP AINDA</h3><p>Seja o primeiro a postar!</p></div>`;
                 return;
             }
-            
-            // Filter out test data and sort by date
-            const realVideos = videos.filter(v => !v.teste && v.id);
-            const sortedVideos = [...realVideos].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-            
-            if (sortedVideos.length === 0) {
-                videoGrid.innerHTML = `
-                    <div class="empty-state" style="grid-column: 1 / -1;">
-                        <div class="empty-state-icon">🎬</div>
-                        <h3>NENHUM CLIP AINDA</h3>
-                        <p>Seja o primeiro a postar uma clipada épica!</p>
-                    </div>
-                `;
+
+            const realVideos = videos.filter(v => !v.teste && v.id).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+            if (realVideos.length === 0) {
+                videoGrid.innerHTML = `<div class="empty-state" style="grid-column: 1 / -1;"><div class="empty-state-icon">🎬</div><h3>NENHUM CLIP AINDA</h3><p>Seja o primeiro a postar!</p></div>`;
                 return;
             }
-            
-            videoGrid.innerHTML = sortedVideos.map(video => {
+
+            videoGrid.innerHTML = realVideos.map(video => {
                 const embedUrl = extractVideoEmbed(video.url);
                 const canDelete = currentUser && (currentUser.isAdmin || currentUser.username === video.author);
                 const isAdminDeleting = currentUser && currentUser.isAdmin && currentUser.username !== video.author;
-                
+                const authorVerified = isUserVerified(video.author);
+
                 return `
                     <div class="video-card">
                         <div class="video-thumbnail">
-                            ${embedUrl ? 
-                                `<iframe src="${embedUrl}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>` :
-                                `<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);font-family:'Orbitron',sans-serif;">URL INVÁLIDA</div>`
-                            }
+                            ${embedUrl ? `<iframe src="${embedUrl}" allowfullscreen></iframe>` : `<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);">URL INVÁLIDA</div>`}
                         </div>
                         <div class="video-info">
                             <h4 class="video-title">${escapeHtml(video.title)}</h4>
@@ -1053,35 +899,78 @@
                             <div class="video-meta">
                                 <div class="video-author">
                                     <div class="author-avatar">${video.author.charAt(0).toUpperCase()}</div>
-                                    <span>${escapeHtml(video.author)}</span>
+                                    <span class="author-name">
+                                        ${escapeHtml(video.author)}
+                                        ${authorVerified ? `<span class="author-verified">${checkSVG}</span>` : ''}
+                                    </span>
                                 </div>
                                 <span>${formatDate(video.createdAt)}</span>
                             </div>
-                            ${canDelete ? `
-                                <div class="video-actions">
-                                    <button class="btn btn-danger btn-small" onclick="deleteVideo('${video.id}')">
-                                        ${isAdminDeleting ? '🛡️ REMOVER (ADMIN)' : '🗑️ EXCLUIR'}
-                                    </button>
-                                </div>
-                            ` : ''}
+                            ${canDelete ? `<div class="video-actions"><button class="btn btn-danger btn-small" onclick="deleteVideo('${video.id}')">${isAdminDeleting ? '🛡️ REMOVER' : '🗑️ EXCLUIR'}</button></div>` : ''}
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
-        // ========================================
-        // MODAL FUNCTIONS
-        // ========================================
-
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('active');
+        async function openAdminPanel() {
+            const currentUser = getCurrentUser();
+            if (!currentUser?.isAdmin) return showNotification('Acesso negado', 'error');
+            openModal('adminModal');
+            await renderUserList();
         }
+
+        async function renderUserList() {
+            const userList = document.getElementById('userList');
+            const users = await fetchBin(CONFIG.USERS_BIN_ID);
+
+            if (!users || Object.keys(users).length === 0) {
+                userList.innerHTML = '<p style="text-align:center;color:var(--text-secondary);">Nenhum usuário</p>';
+                return;
+            }
+
+            userList.innerHTML = Object.entries(users).sort((a, b) => a[0].localeCompare(b[0])).map(([username, data]) => {
+                const isVerified = data.verified || false;
+                const isAdmin = data.isAdmin || false;
+                return `
+                    <div class="user-item">
+                        <div class="user-item-info">
+                            <div class="user-item-avatar">${username.charAt(0).toUpperCase()}</div>
+                            <span class="user-item-name">
+                                ${escapeHtml(username)}
+                                ${isVerified ? `<span class="verified-badge">${checkSVG}</span>` : ''}
+                                ${isAdmin ? '<span class="admin-badge">ADMIN</span>' : ''}
+                            </span>
+                        </div>
+                        ${!isAdmin ? `<button class="btn ${isVerified ? 'btn-danger' : 'btn-verify'} btn-small" onclick="toggleVerification('${username}')">${isVerified ? '✗ REMOVER' : '✓ VERIFICAR'}</button>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function toggleVerification(username) {
+            const currentUser = getCurrentUser();
+            if (!currentUser?.isAdmin) return showNotification('Acesso negado', 'error');
+
+            const users = await fetchBin(CONFIG.USERS_BIN_ID);
+            if (!users?.[username]) return showNotification('Usuário não encontrado', 'error');
+
+            const wasVerified = users[username].verified || false;
+            users[username].verified = !wasVerified;
+
+            await updateBin(CONFIG.USERS_BIN_ID, users);
+            usersCache = users;
+
+            showNotification(wasVerified ? `Verificação removida de ${username}` : `${username} verificado! ✓`);
+            await renderUserList();
+            updateNav();
+            renderVideos();
+        }
+
+        function openModal(modalId) { document.getElementById(modalId).classList.add('active'); }
 
         function closeModal(modalId) {
             document.getElementById(modalId).classList.remove('active');
-            
-            // Reset forms
             if (modalId === 'authModal') {
                 document.getElementById('loginForm').reset();
                 document.getElementById('registerForm').reset();
@@ -1097,51 +986,37 @@
 
         function switchAuthTab(tab) {
             const tabs = document.querySelectorAll('.form-tab');
-            const loginForm = document.getElementById('loginForm');
-            const registerForm = document.getElementById('registerForm');
-            const title = document.getElementById('authModalTitle');
-            
             tabs.forEach(t => t.classList.remove('active'));
-            
             if (tab === 'login') {
                 tabs[0].classList.add('active');
-                loginForm.classList.remove('hidden');
-                registerForm.classList.add('hidden');
-                title.textContent = 'LOGIN';
+                document.getElementById('loginForm').classList.remove('hidden');
+                document.getElementById('registerForm').classList.add('hidden');
+                document.getElementById('authModalTitle').textContent = 'LOGIN';
             } else {
                 tabs[1].classList.add('active');
-                loginForm.classList.add('hidden');
-                registerForm.classList.remove('hidden');
-                title.textContent = 'REGISTRAR';
+                document.getElementById('loginForm').classList.add('hidden');
+                document.getElementById('registerForm').classList.remove('hidden');
+                document.getElementById('authModalTitle').textContent = 'REGISTRAR';
             }
         }
 
-        // ========================================
-        // AUTH HANDLERS
-        // ========================================
-
         async function handleLogin(e) {
             e.preventDefault();
-            
             const username = document.getElementById('loginUsername').value.trim().toLowerCase();
             const password = document.getElementById('loginPassword').value;
             const errorEl = document.getElementById('loginError');
-            
             errorEl.classList.remove('show');
-            
+
             const users = await fetchBin(CONFIG.USERS_BIN_ID);
-            
-            if (!users || !users[username] || users[username].password !== password) {
+            usersCache = users || {};
+
+            if (!users?.[username] || users[username].password !== password) {
                 errorEl.textContent = 'Usuário ou senha incorretos';
                 errorEl.classList.add('show');
                 return;
             }
-            
-            setCurrentUser({
-                username: username,
-                isAdmin: users[username].isAdmin || false
-            });
-            
+
+            setCurrentUser({ username, isAdmin: users[username].isAdmin || false });
             closeModal('authModal');
             updateNav();
             renderVideos();
@@ -1150,127 +1025,63 @@
 
         async function handleRegister(e) {
             e.preventDefault();
-            
             const username = document.getElementById('registerUsername').value.trim().toLowerCase();
             const password = document.getElementById('registerPassword').value;
             const confirm = document.getElementById('registerConfirm').value;
             const errorEl = document.getElementById('registerError');
             const successEl = document.getElementById('registerSuccess');
-            
             errorEl.classList.remove('show');
             successEl.classList.remove('show');
-            
-            // Validations
-            if (username.length < 3) {
-                errorEl.textContent = 'Usuário deve ter pelo menos 3 caracteres';
-                errorEl.classList.add('show');
-                return;
-            }
-            
-            if (!/^[a-z0-9_]+$/.test(username)) {
-                errorEl.textContent = 'Apenas letras minúsculas, números e _';
-                errorEl.classList.add('show');
-                return;
-            }
-            
-            if (password.length < 4) {
-                errorEl.textContent = 'Senha deve ter pelo menos 4 caracteres';
-                errorEl.classList.add('show');
-                return;
-            }
-            
-            if (password !== confirm) {
-                errorEl.textContent = 'As senhas não coincidem';
-                errorEl.classList.add('show');
-                return;
-            }
-            
+
+            if (username.length < 3) { errorEl.textContent = 'Mínimo 3 caracteres'; errorEl.classList.add('show'); return; }
+            if (!/^[a-z0-9_]+$/.test(username)) { errorEl.textContent = 'Apenas letras, números e _'; errorEl.classList.add('show'); return; }
+            if (password.length < 4) { errorEl.textContent = 'Senha mínimo 4 caracteres'; errorEl.classList.add('show'); return; }
+            if (password !== confirm) { errorEl.textContent = 'Senhas não coincidem'; errorEl.classList.add('show'); return; }
+
             const users = await fetchBin(CONFIG.USERS_BIN_ID);
-            
-            if (users && users[username]) {
-                errorEl.textContent = 'Este usuário já existe';
-                errorEl.classList.add('show');
-                return;
-            }
-            
-            // Create user
-            const updatedUsers = {
-                ...users,
-                [username]: {
-                    password: password,
-                    isAdmin: false,
-                    createdAt: new Date().toISOString()
-                }
-            };
-            
+            if (users?.[username]) { errorEl.textContent = 'Usuário já existe'; errorEl.classList.add('show'); return; }
+
+            const updatedUsers = { ...users, [username]: { password, isAdmin: false, verified: false, createdAt: new Date().toISOString() } };
             await updateBin(CONFIG.USERS_BIN_ID, updatedUsers);
-            
-            successEl.textContent = 'Conta criada! Faça login para continuar.';
+            usersCache = updatedUsers;
+
+            successEl.textContent = 'Conta criada! Faça login.';
             successEl.classList.add('show');
             document.getElementById('registerForm').reset();
-            
             updateStats();
-            
-            setTimeout(() => {
-                switchAuthTab('login');
-                successEl.classList.remove('show');
-            }, 2000);
+            setTimeout(() => { switchAuthTab('login'); successEl.classList.remove('show'); }, 2000);
         }
 
         function handleLogout() {
             setCurrentUser(null);
             updateNav();
             renderVideos();
-            showNotification('Você saiu da conta');
+            showNotification('Você saiu');
         }
-
-        // ========================================
-        // VIDEO HANDLERS
-        // ========================================
 
         async function handlePostVideo(e) {
             e.preventDefault();
-            
             const title = document.getElementById('videoTitle').value.trim();
             const url = document.getElementById('videoUrl').value.trim();
             const description = document.getElementById('videoDescription').value.trim();
             const errorEl = document.getElementById('postError');
             const currentUser = getCurrentUser();
-            
             errorEl.classList.remove('show');
-            
-            if (!currentUser) {
-                showNotification('Você precisa estar logado', 'error');
-                return;
-            }
-            
-            if (!extractVideoEmbed(url)) {
-                errorEl.textContent = 'URL inválida. Use YouTube ou Twitch Clips.';
-                errorEl.classList.add('show');
-                return;
-            }
-            
+
+            if (!currentUser) return showNotification('Faça login primeiro', 'error');
+            if (!extractVideoEmbed(url)) { errorEl.textContent = 'URL inválida (YouTube/Twitch)'; errorEl.classList.add('show'); return; }
+
             let videos = await fetchBin(CONFIG.VIDEOS_BIN_ID) || [];
-            
-            // Filter out test data
-            if (!Array.isArray(videos)) {
-                videos = [];
-            }
-            const realVideos = videos.filter(v => !v.teste);
-            
-            const newVideo = {
+            if (!Array.isArray(videos)) videos = [];
+
+            videos.push({
                 id: Date.now().toString(36) + Math.random().toString(36).substr(2),
-                title: title,
-                url: url,
-                description: description,
+                title, url, description,
                 author: currentUser.username,
                 createdAt: new Date().toISOString()
-            };
-            
-            realVideos.push(newVideo);
-            
-            await updateBin(CONFIG.VIDEOS_BIN_ID, realVideos);
-            
+            });
+
+            await updateBin(CONFIG.VIDEOS_BIN_ID, videos.filter(v => !v.teste));
             closeModal('postModal');
             updateStats();
             renderVideos();
@@ -1280,62 +1091,30 @@
         async function deleteVideo(videoId) {
             const currentUser = getCurrentUser();
             if (!currentUser) return;
-            
-            if (!confirm('Tem certeza que deseja excluir este clip?')) return;
-            
+            if (!confirm('Excluir este clip?')) return;
+
             const videos = await fetchBin(CONFIG.VIDEOS_BIN_ID);
-            const video = videos.find(v => v.id === videoId);
-            
+            const video = videos?.find(v => v.id === videoId);
             if (!video) return;
-            
-            if (!currentUser.isAdmin && video.author !== currentUser.username) {
-                showNotification('Sem permissão para excluir', 'error');
-                return;
-            }
-            
-            const newVideos = videos.filter(v => v.id !== videoId);
-            await updateBin(CONFIG.VIDEOS_BIN_ID, newVideos);
-            
+            if (!currentUser.isAdmin && video.author !== currentUser.username) return showNotification('Sem permissão', 'error');
+
+            await updateBin(CONFIG.VIDEOS_BIN_ID, videos.filter(v => v.id !== videoId));
             updateStats();
             renderVideos();
             showNotification('Clip excluído!');
         }
 
-        // ========================================
-        // EVENT LISTENERS
-        // ========================================
-
         document.querySelectorAll('.modal-overlay').forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal(modal.id);
-                }
-            });
+            modal.addEventListener('click', e => { if (e.target === modal) closeModal(modal.id); });
         });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id)); });
 
-        // ESC key to close modals
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
-                    closeModal(modal.id);
-                });
-            }
-        });
-
-        // ========================================
-        // INITIALIZE
-        // ========================================
-
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadUsersCache();
             updateNav();
             updateStats();
             renderVideos();
-            
-            // Auto refresh every 30 seconds
-            setInterval(() => {
-                renderVideos();
-                updateStats();
-            }, 30000);
+            setInterval(() => { renderVideos(); updateStats(); }, 30000);
         });
     </script>
 </body>
