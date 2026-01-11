@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUSTAFIELD CLIPS - Melhores Clipadas</title>
+    <title>RUSTAFIELD CLIPS - Clips & Lives</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,6 +19,7 @@
             --success: #00ff41;
             --danger: #ff3344;
             --verified-blue: #1da1f2;
+            --live-red: #ff0000;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -102,7 +103,7 @@
 
         .logo span { color: var(--text-primary); text-shadow: none; }
 
-        .nav-buttons { display: flex; gap: 12px; align-items: center; }
+        .nav-buttons { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 
         .btn {
             padding: 12px 24px;
@@ -152,8 +153,16 @@
             box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
         }
 
-        .btn-admin:hover {
-            box-shadow: 0 0 25px rgba(102, 126, 234, 0.6);
+        .btn-live {
+            background: var(--live-red);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            animation: live-pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes live-pulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(255, 0, 0, 0.7); }
         }
 
         .btn-verify {
@@ -189,7 +198,6 @@
             gap: 6px;
         }
 
-        /* Selo de verificação - Bolinha azul */
         .verified-badge {
             display: inline-flex;
             align-items: center;
@@ -200,7 +208,6 @@
             border-radius: 50%;
             margin-left: 4px;
             box-shadow: 0 0 10px rgba(29, 161, 242, 0.6);
-            position: relative;
         }
 
         .verified-badge svg {
@@ -209,7 +216,6 @@
             fill: white;
         }
 
-        /* Selo menor para os clips */
         .author-verified {
             display: inline-flex;
             align-items: center;
@@ -243,7 +249,7 @@
 
         .hero {
             text-align: center;
-            padding: 70px 20px;
+            padding: 50px 20px;
             margin-bottom: 40px;
             background: radial-gradient(ellipse at center, rgba(0, 255, 65, 0.1) 0%, transparent 70%);
             border-radius: 20px;
@@ -271,7 +277,7 @@
 
         .hero p { color: var(--text-secondary); font-size: 18px; letter-spacing: 2px; margin-top: 15px; }
 
-        .stats { display: flex; justify-content: center; gap: 60px; margin-top: 40px; }
+        .stats { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
 
         .stat-item { text-align: center; }
 
@@ -281,6 +287,11 @@
             font-weight: 900;
             color: var(--neon-green);
             text-shadow: 0 0 15px var(--neon-green-glow);
+        }
+
+        .stat-number.live-count {
+            color: var(--live-red);
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
         }
 
         .stat-label {
@@ -318,6 +329,129 @@
             box-shadow: 0 0 10px var(--neon-green-glow);
         }
 
+        .section-title.live-title {
+            color: var(--live-red);
+        }
+
+        .section-title.live-title::before {
+            background: var(--live-red);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+        }
+
+        /* Live Badge */
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--live-red);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            animation: live-pulse 1.5s ease-in-out infinite;
+        }
+
+        .live-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        /* Live Grid */
+        .live-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .live-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--live-red);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+        }
+
+        .live-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
+        }
+
+        .live-thumbnail {
+            position: relative;
+            padding-top: 56.25%;
+            background: #000;
+        }
+
+        .live-thumbnail iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        .live-info {
+            padding: 18px;
+        }
+
+        .live-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .live-title-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .live-viewers {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--live-red);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .live-viewers svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--live-red);
+        }
+
+        .live-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .live-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .live-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Video Grid */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
@@ -399,6 +533,7 @@
             flex-wrap: wrap;
         }
 
+        /* Modal */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -426,6 +561,11 @@
             overflow-y: auto;
         }
 
+        .modal.live-modal {
+            border-color: var(--live-red);
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.3);
+        }
+
         @keyframes modalSlide {
             from { opacity: 0; transform: translateY(-30px) scale(0.95); }
             to { opacity: 1; transform: translateY(0) scale(1); }
@@ -444,6 +584,10 @@
             font-weight: 700;
             letter-spacing: 3px;
             color: var(--neon-green);
+        }
+
+        .modal-title.live-title {
+            color: var(--live-red);
         }
 
         .modal-close {
@@ -469,6 +613,10 @@
             color: var(--neon-green);
         }
 
+        .form-group.live-form label {
+            color: var(--live-red);
+        }
+
         .form-group input, .form-group textarea {
             width: 100%;
             padding: 14px 16px;
@@ -485,6 +633,11 @@
             outline: none;
             border-color: var(--neon-green);
             box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+        }
+
+        .form-group.live-form input:focus {
+            border-color: var(--live-red);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
         }
 
         .form-group textarea { resize: vertical; min-height: 80px; }
@@ -550,9 +703,9 @@
 
         .user-item-name { display: flex; align-items: center; gap: 6px; font-weight: 600; }
 
-        .empty-state { text-align: center; padding: 80px 20px; color: var(--text-secondary); }
-        .empty-state-icon { font-size: 80px; margin-bottom: 20px; }
-        .empty-state h3 { font-family: 'Orbitron', sans-serif; font-size: 20px; color: var(--text-primary); }
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); }
+        .empty-state-icon { font-size: 60px; margin-bottom: 15px; }
+        .empty-state h3 { font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--text-primary); margin-bottom: 5px; }
 
         .loading { text-align: center; padding: 60px 20px; color: var(--text-secondary); }
 
@@ -588,14 +741,29 @@
             to { opacity: 1; transform: translateX(0); }
         }
 
+        .info-box {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid var(--neon-green);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .info-box.live-info {
+            background: rgba(255, 0, 0, 0.1);
+            border-color: var(--live-red);
+        }
+
         @media (max-width: 768px) {
             .header-content { flex-wrap: wrap; height: auto; padding: 15px 0; gap: 15px; }
             .logo h1 { font-size: 18px; }
             .hero h2 { font-size: 24px; }
-            .stats { flex-wrap: wrap; gap: 30px; }
+            .stats { gap: 30px; }
             .stat-number { font-size: 36px; }
-            .video-grid { grid-template-columns: 1fr; }
-            .nav-buttons { flex-wrap: wrap; justify-content: center; }
+            .video-grid, .live-grid { grid-template-columns: 1fr; }
+            .nav-buttons { justify-content: center; }
             .btn { padding: 10px 16px; font-size: 10px; }
         }
 
@@ -616,8 +784,12 @@
     <main>
         <section class="hero">
             <h2>⚡ RUSTAFIELD CLIPS ⚡</h2>
-            <p>Compartilhe suas melhores jogadas e momentos épicos!</p>
+            <p>Clips, Lives e os melhores momentos!</p>
             <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number live-count" id="totalLives">0</div>
+                    <div class="stat-label">🔴 Ao Vivo</div>
+                </div>
                 <div class="stat-item">
                     <div class="stat-number" id="totalClips">0</div>
                     <div class="stat-label">Clips</div>
@@ -629,9 +801,24 @@
             </div>
         </section>
 
+        <!-- Lives Section -->
+        <section id="livesSection">
+            <div class="section-header">
+                <h3 class="section-title live-title">🔴 Lives Ao Vivo</h3>
+            </div>
+            <div id="liveGrid" class="live-grid">
+                <div class="empty-state" style="grid-column: 1 / -1;">
+                    <div class="empty-state-icon">📡</div>
+                    <h3>Nenhuma live no momento</h3>
+                    <p>Seja o primeiro a transmitir!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clips Section -->
         <section>
             <div class="section-header">
-                <h3 class="section-title">Últimos Clips</h3>
+                <h3 class="section-title">🎬 Últimos Clips</h3>
             </div>
             <div id="videoGrid" class="video-grid">
                 <div class="loading" style="grid-column: 1 / -1;">
@@ -685,7 +872,7 @@
         </div>
     </div>
 
-    <!-- Post Video Modal -->
+    <!-- Post Clip Modal -->
     <div class="modal-overlay" id="postModal">
         <div class="modal">
             <div class="modal-header">
@@ -711,6 +898,34 @@
         </div>
     </div>
 
+    <!-- Start Live Modal -->
+    <div class="modal-overlay" id="liveModal">
+        <div class="modal live-modal">
+            <div class="modal-header">
+                <h3 class="modal-title live-title">🔴 INICIAR LIVE</h3>
+                <button class="modal-close" onclick="closeModal('liveModal')">&times;</button>
+            </div>
+            <div class="info-box live-info">
+                <strong>Como funciona:</strong><br>
+                1. Inicie sua live no Twitch ou YouTube<br>
+                2. Cole o link da sua live aqui<br>
+                3. Sua live aparecerá no site para todos!
+            </div>
+            <form onsubmit="handleStartLive(event)">
+                <div class="form-group live-form">
+                    <label>Título da Live</label>
+                    <input type="text" id="liveTitle" required placeholder="Ex: Raid de wipe day!">
+                </div>
+                <div class="form-group live-form">
+                    <label>URL da Live (Twitch ou YouTube)</label>
+                    <input type="url" id="liveUrl" required placeholder="https://twitch.tv/seunome">
+                </div>
+                <div id="liveError" class="form-error"></div>
+                <button type="submit" class="btn btn-live" style="width: 100%; margin-top: 10px;">🔴 ENTRAR AO VIVO</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Admin Panel Modal -->
     <div class="modal-overlay" id="adminModal">
         <div class="modal">
@@ -719,7 +934,7 @@
                 <button class="modal-close" onclick="closeModal('adminModal')">&times;</button>
             </div>
             <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">
-                Gerencie as verificações dos usuários. Clique para dar ou remover o selo.
+                Gerencie as verificações dos usuários.
             </p>
             <div class="user-list" id="userList">
                 <div class="loading">
@@ -731,17 +946,19 @@
     </div>
 
     <script>
-        // SVG do check para o selo de verificação
         const checkSVG = `<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>`;
+        const eyeSVG = `<svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>`;
 
         const CONFIG = {
             MASTER_KEY: '$2a$10$4ZMKXJ8Ixb.oX.itZmWdu.0vbXvVfSRNOQFMI86V2Xbyyc48DserG',
             USERS_BIN_ID: '696161fdae596e708fd0cd15',
             VIDEOS_BIN_ID: '696162c3ae596e708fd0ce56',
+            LIVES_BIN_ID: '696162c3ae596e708fd0ce56', // Usando mesmo bin, separado por tipo
             API_URL: 'https://api.jsonbin.io/v3/b'
         };
 
         let usersCache = {};
+        let dataCache = { videos: [], lives: [] };
 
         async function fetchBin(binId) {
             try {
@@ -793,9 +1010,36 @@
 
         function extractVideoEmbed(url) {
             const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-            if (ytMatch) return `https://www.youtube.com/embed/${ytMatch[1]}`;
-            const twitchMatch = url.match(/(?:clips\.twitch\.tv\/|twitch\.tv\/\w+\/clip\/)([a-zA-Z0-9_-]+)/);
-            if (twitchMatch) return `https://clips.twitch.tv/embed?clip=${twitchMatch[1]}&parent=${window.location.hostname}`;
+            if (ytMatch) return { type: 'youtube', id: ytMatch[1], embed: `https://www.youtube.com/embed/${ytMatch[1]}` };
+            
+            const twitchClipMatch = url.match(/(?:clips\.twitch\.tv\/|twitch\.tv\/\w+\/clip\/)([a-zA-Z0-9_-]+)/);
+            if (twitchClipMatch) return { type: 'twitch-clip', id: twitchClipMatch[1], embed: `https://clips.twitch.tv/embed?clip=${twitchClipMatch[1]}&parent=${window.location.hostname}` };
+            
+            return null;
+        }
+
+        function extractLiveEmbed(url) {
+            // Twitch channel
+            const twitchMatch = url.match(/twitch\.tv\/([a-zA-Z0-9_]+)(?:\/)?(?!clip)/);
+            if (twitchMatch && !url.includes('/clip/') && !url.includes('clips.twitch.tv')) {
+                return { 
+                    type: 'twitch', 
+                    channel: twitchMatch[1], 
+                    embed: `https://player.twitch.tv/?channel=${twitchMatch[1]}&parent=${window.location.hostname}`,
+                    chat: `https://www.twitch.tv/embed/${twitchMatch[1]}/chat?parent=${window.location.hostname}`
+                };
+            }
+            
+            // YouTube live
+            const ytLiveMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|live\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+            if (ytLiveMatch) {
+                return { 
+                    type: 'youtube', 
+                    id: ytLiveMatch[1], 
+                    embed: `https://www.youtube.com/embed/${ytLiveMatch[1]}?autoplay=1`
+                };
+            }
+            
             return null;
         }
 
@@ -834,6 +1078,7 @@
             if (currentUser) {
                 const isVerified = isUserVerified(currentUser.username);
                 navButtons.innerHTML = `
+                    <button class="btn btn-live" onclick="openModal('liveModal')">🔴 LIVE</button>
                     <button class="btn btn-primary" onclick="openModal('postModal')">+ CLIP</button>
                     ${currentUser.isAdmin ? '<button class="btn btn-admin" onclick="openAdminPanel()">🛡️ ADMIN</button>' : ''}
                     <div class="user-info">
@@ -854,36 +1099,91 @@
             }
         }
 
+        async function loadData() {
+            const data = await fetchBin(CONFIG.VIDEOS_BIN_ID);
+            if (Array.isArray(data)) {
+                dataCache.videos = data.filter(item => item.type !== 'live' && !item.teste && item.id);
+                dataCache.lives = data.filter(item => item.type === 'live' && item.id);
+            }
+            return dataCache;
+        }
+
+        async function saveData() {
+            const allData = [...dataCache.videos, ...dataCache.lives];
+            await updateBin(CONFIG.VIDEOS_BIN_ID, allData);
+        }
+
         async function updateStats() {
             const users = await fetchBin(CONFIG.USERS_BIN_ID);
-            const videos = await fetchBin(CONFIG.VIDEOS_BIN_ID);
             usersCache = users || {};
+            
+            await loadData();
+            
             if (users) document.getElementById('totalUsers').textContent = Object.keys(users).length;
-            if (videos && Array.isArray(videos)) {
-                document.getElementById('totalClips').textContent = videos.filter(v => !v.teste && v.id).length;
+            document.getElementById('totalClips').textContent = dataCache.videos.length;
+            document.getElementById('totalLives').textContent = dataCache.lives.length;
+        }
+
+        async function renderLives() {
+            const liveGrid = document.getElementById('liveGrid');
+            const currentUser = getCurrentUser();
+            await loadUsersCache();
+            await loadData();
+
+            const lives = dataCache.lives;
+
+            if (lives.length === 0) {
+                liveGrid.innerHTML = `<div class="empty-state" style="grid-column: 1 / -1;"><div class="empty-state-icon">📡</div><h3>Nenhuma live no momento</h3><p>Seja o primeiro a transmitir!</p></div>`;
+                return;
             }
+
+            liveGrid.innerHTML = lives.map(live => {
+                const liveData = extractLiveEmbed(live.url);
+                const canDelete = currentUser && (currentUser.isAdmin || currentUser.username === live.author);
+                const authorVerified = isUserVerified(live.author);
+
+                return `
+                    <div class="live-card">
+                        <div class="live-thumbnail">
+                            ${liveData ? `<iframe src="${liveData.embed}" allowfullscreen></iframe>` : `<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);">URL INVÁLIDA</div>`}
+                        </div>
+                        <div class="live-info">
+                            <div class="live-header">
+                                <span class="live-title-text">${escapeHtml(live.title)}</span>
+                                <span class="live-badge">AO VIVO</span>
+                            </div>
+                            <div class="live-meta">
+                                <div class="live-author">
+                                    <div class="author-avatar">${live.author.charAt(0).toUpperCase()}</div>
+                                    <span class="author-name">
+                                        ${escapeHtml(live.author)}
+                                        ${authorVerified ? `<span class="author-verified">${checkSVG}</span>` : ''}
+                                    </span>
+                                </div>
+                                <span>Iniciou ${formatDate(live.createdAt)}</span>
+                            </div>
+                            ${canDelete ? `<div class="live-actions"><button class="btn btn-danger btn-small" onclick="endLive('${live.id}')">⏹️ ENCERRAR LIVE</button></div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
         async function renderVideos() {
             const videoGrid = document.getElementById('videoGrid');
-            const videos = await fetchBin(CONFIG.VIDEOS_BIN_ID);
             const currentUser = getCurrentUser();
             await loadUsersCache();
+            await loadData();
 
-            if (!videos || videos.length === 0) {
+            const videos = dataCache.videos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+            if (videos.length === 0) {
                 videoGrid.innerHTML = `<div class="empty-state" style="grid-column: 1 / -1;"><div class="empty-state-icon">🎬</div><h3>NENHUM CLIP AINDA</h3><p>Seja o primeiro a postar!</p></div>`;
                 return;
             }
 
-            const realVideos = videos.filter(v => !v.teste && v.id).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-
-            if (realVideos.length === 0) {
-                videoGrid.innerHTML = `<div class="empty-state" style="grid-column: 1 / -1;"><div class="empty-state-icon">🎬</div><h3>NENHUM CLIP AINDA</h3><p>Seja o primeiro a postar!</p></div>`;
-                return;
-            }
-
-            videoGrid.innerHTML = realVideos.map(video => {
-                const embedUrl = extractVideoEmbed(video.url);
+            videoGrid.innerHTML = videos.map(video => {
+                const embedData = extractVideoEmbed(video.url);
                 const canDelete = currentUser && (currentUser.isAdmin || currentUser.username === video.author);
                 const isAdminDeleting = currentUser && currentUser.isAdmin && currentUser.username !== video.author;
                 const authorVerified = isUserVerified(video.author);
@@ -891,7 +1191,7 @@
                 return `
                     <div class="video-card">
                         <div class="video-thumbnail">
-                            ${embedUrl ? `<iframe src="${embedUrl}" allowfullscreen></iframe>` : `<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);">URL INVÁLIDA</div>`}
+                            ${embedData ? `<iframe src="${embedData.embed}" allowfullscreen></iframe>` : `<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);">URL INVÁLIDA</div>`}
                         </div>
                         <div class="video-info">
                             <h4 class="video-title">${escapeHtml(video.title)}</h4>
@@ -911,6 +1211,68 @@
                     </div>
                 `;
             }).join('');
+        }
+
+        async function handleStartLive(e) {
+            e.preventDefault();
+            const title = document.getElementById('liveTitle').value.trim();
+            const url = document.getElementById('liveUrl').value.trim();
+            const errorEl = document.getElementById('liveError');
+            const currentUser = getCurrentUser();
+            errorEl.classList.remove('show');
+
+            if (!currentUser) return showNotification('Faça login primeiro', 'error');
+            
+            const liveData = extractLiveEmbed(url);
+            if (!liveData) { 
+                errorEl.textContent = 'URL inválida. Use link do seu canal Twitch ou YouTube.'; 
+                errorEl.classList.add('show'); 
+                return; 
+            }
+
+            // Check if user already has a live
+            const existingLive = dataCache.lives.find(l => l.author === currentUser.username);
+            if (existingLive) {
+                errorEl.textContent = 'Você já tem uma live ativa. Encerre a anterior primeiro.';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            const newLive = {
+                id: Date.now().toString(36) + Math.random().toString(36).substr(2),
+                type: 'live',
+                title,
+                url,
+                author: currentUser.username,
+                createdAt: new Date().toISOString()
+            };
+
+            dataCache.lives.push(newLive);
+            await saveData();
+
+            closeModal('liveModal');
+            document.getElementById('liveTitle').value = '';
+            document.getElementById('liveUrl').value = '';
+            updateStats();
+            renderLives();
+            showNotification('🔴 Sua live está no ar!');
+        }
+
+        async function endLive(liveId) {
+            const currentUser = getCurrentUser();
+            if (!currentUser) return;
+            if (!confirm('Encerrar esta live?')) return;
+
+            const live = dataCache.lives.find(l => l.id === liveId);
+            if (!live) return;
+            if (!currentUser.isAdmin && live.author !== currentUser.username) return showNotification('Sem permissão', 'error');
+
+            dataCache.lives = dataCache.lives.filter(l => l.id !== liveId);
+            await saveData();
+
+            updateStats();
+            renderLives();
+            showNotification('Live encerrada!');
         }
 
         async function openAdminPanel() {
@@ -965,6 +1327,7 @@
             await renderUserList();
             updateNav();
             renderVideos();
+            renderLives();
         }
 
         function openModal(modalId) { document.getElementById(modalId).classList.add('active'); }
@@ -981,6 +1344,10 @@
             if (modalId === 'postModal') {
                 document.querySelector('#postModal form').reset();
                 document.getElementById('postError').classList.remove('show');
+            }
+            if (modalId === 'liveModal') {
+                document.querySelector('#liveModal form').reset();
+                document.getElementById('liveError').classList.remove('show');
             }
         }
 
@@ -1020,6 +1387,7 @@
             closeModal('authModal');
             updateNav();
             renderVideos();
+            renderLives();
             showNotification(`Bem-vindo, ${username}!`);
         }
 
@@ -1056,6 +1424,7 @@
             setCurrentUser(null);
             updateNav();
             renderVideos();
+            renderLives();
             showNotification('Você saiu');
         }
 
@@ -1069,19 +1438,18 @@
             errorEl.classList.remove('show');
 
             if (!currentUser) return showNotification('Faça login primeiro', 'error');
-            if (!extractVideoEmbed(url)) { errorEl.textContent = 'URL inválida (YouTube/Twitch)'; errorEl.classList.add('show'); return; }
+            if (!extractVideoEmbed(url)) { errorEl.textContent = 'URL inválida (YouTube/Twitch Clip)'; errorEl.classList.add('show'); return; }
 
-            let videos = await fetchBin(CONFIG.VIDEOS_BIN_ID) || [];
-            if (!Array.isArray(videos)) videos = [];
-
-            videos.push({
+            const newVideo = {
                 id: Date.now().toString(36) + Math.random().toString(36).substr(2),
                 title, url, description,
                 author: currentUser.username,
                 createdAt: new Date().toISOString()
-            });
+            };
 
-            await updateBin(CONFIG.VIDEOS_BIN_ID, videos.filter(v => !v.teste));
+            dataCache.videos.push(newVideo);
+            await saveData();
+
             closeModal('postModal');
             updateStats();
             renderVideos();
@@ -1093,12 +1461,13 @@
             if (!currentUser) return;
             if (!confirm('Excluir este clip?')) return;
 
-            const videos = await fetchBin(CONFIG.VIDEOS_BIN_ID);
-            const video = videos?.find(v => v.id === videoId);
+            const video = dataCache.videos.find(v => v.id === videoId);
             if (!video) return;
             if (!currentUser.isAdmin && video.author !== currentUser.username) return showNotification('Sem permissão', 'error');
 
-            await updateBin(CONFIG.VIDEOS_BIN_ID, videos.filter(v => v.id !== videoId));
+            dataCache.videos = dataCache.videos.filter(v => v.id !== videoId);
+            await saveData();
+
             updateStats();
             renderVideos();
             showNotification('Clip excluído!');
@@ -1111,10 +1480,20 @@
 
         document.addEventListener('DOMContentLoaded', async () => {
             await loadUsersCache();
+            await loadData();
             updateNav();
             updateStats();
+            renderLives();
             renderVideos();
-            setInterval(() => { renderVideos(); updateStats(); }, 30000);
+            
+            // Refresh every 30 seconds
+            setInterval(() => { 
+                loadData().then(() => {
+                    renderLives(); 
+                    renderVideos();
+                    updateStats();
+                });
+            }, 30000);
         });
     </script>
 </body>
